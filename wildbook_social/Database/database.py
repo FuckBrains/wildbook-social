@@ -4,6 +4,7 @@ from datetime import timedelta
 import dateutil.parser
 import matplotlib.pyplot as plt
 import csv
+##import collections
 
 class Database:
     def __init__(self, key, database):
@@ -25,7 +26,7 @@ class Database:
     def doStatistics(self, collection, amount):
         i = 1
         while(amount > 0):
-            item = self.db[collection].find_one({"$or":[{"relevant":None}, {"wild":None}]}) #{'recordingDetails.location': None}]})
+            item = self.db[collection].find_one({"$or":[{"relevant":None}, {"wild":None}]})
             if not item:
                 break
             
@@ -64,8 +65,6 @@ class Database:
                 if self.dbName == 'youtube':
                     loc = 0
                 
-              
-                
             #update with new values
             if self.dbName == 'youtube':
                 self._updateItem(collection, item['_id'], {"relevant": rel, "wild": wild,"newLocation": loc })
@@ -96,7 +95,7 @@ class Database:
         if total == 0:
             print("No videos were processed yet.")
             return
-        #relevant count used for determining % of wild from relevant amount of items
+        #relevant count
         relevant_count = self.db[collection].count_documents({ "$and": [{"relevant":True}]})
         # %relevant caluclated out of total
         relevant = self.db[collection].count_documents({ "$and": [{"relevant":True}]}) / total * 100 
@@ -144,6 +143,21 @@ class Database:
         plt.ylabel('Number of posts')
         plt.title('Histogram for Time Between Succesive Wild Posts')
         plt.show()
+    
+    #def postsPerUser(self, collection):
+        #docs = self.db[collection].find({'channelId':{'$ne': 0}})#{wild:True})
+        #user_list = []
+        
+        #print(docs)
+        
+        #for doc in docs:
+        #    try:
+        #        user = doc['channelId']
+        #        print(user)
+                #user_list.append(user)
+        #    except KeyError:
+         #       pass
+        
         
     #customized to youtube only so far
     def heatmap(self,collection, csvName):
@@ -170,14 +184,42 @@ class Database:
             for item in loc_list:
                 csvName.writerow(item)
         print('done! Check in your jupyter files for a .csv file with the name you entered')
+    
+    #method to retrieve all wild documents for wildbook api call
+    #in YouTube playground, call method with 'saveTo' as existingCollection parameter
+    #should we create a new collection for each species with wild docs (*chosen for now), 
+    #1 single collection for ALL species w wild docs, or a csv file for each doc
+    def relevantDocuments(self, existingCollection):
+        
+        newDocs = self.db[existingCollection].find({"wild": True})
+        #create new collection to store relevant documents for each species (specific to youtube collections)
+        if existingCollection == "humpback whales":
+            newCollection = "humpback whales wild"
+        elif existingCollection == "whale sharks":
+            newCollection = "whale sharks wild"
+        elif existingCollection == "iberian lynx":
+            newCollection = "iberian lynx wild"
+        elif existingCollection == "grevys zebra":
+            newCollection = "grevys zebra wild"
+        elif existingCollection == "Reticulated Giraffe":
+            newCollection = "Reticulated Giraffe wild"
+        elif existingCollection == "plains zebras":
+            newCollection = "plains zebras wild"
+        
+        #insert "wild" encounter items from existingCollection into newCollection
+        #if not already in newCollection
+        for item in newDocs:
+            if self.db[newCollection].find_one(item) == None:
+                self.db[newCollection].insert_one(item);
+
+            
              
     def clearCollection(self, collection, msg=''):
         if (msg == 'yes'):
             self.db[collection].delete_many({})
-            print("Colelction was cleared.")
+            print("Collection was cleared.")
         else:
             print("Pass 'yes' into clearCollection() method to really clear it.")
             
     def close(self):
         self.client.close()
-        
