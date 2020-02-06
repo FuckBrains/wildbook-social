@@ -4,7 +4,7 @@ from datetime import timedelta
 import dateutil.parser
 import matplotlib.pyplot as plt
 import csv
-##import collections
+#import collections
 
 class Database:
     def __init__(self, key, database):
@@ -13,11 +13,15 @@ class Database:
         self.db = self.client[database]
         
     def addItem(self, payload, collection):
-        try:
-            self.db[collection].insert_one(payload)
-        except:
-            # Item already exists in database
-            pass
+        if self.dbName == 'iNaturalist':
+            if self.db[collection].find_one(payload) == None:
+                self.db[collection].insert_one(payload);
+        else:
+            try:
+                self.db[collection].insert_one(payload)
+            except:
+                # Item already exists in database
+                pass
         
     def getAllItems(self, collection):
         res = self.db[collection].find()
@@ -33,8 +37,10 @@ class Database:
             if self.dbName=='youtube':
                 print("{}: {}".format(i, item['title']['original']))
                 display(YouTubeVideo(item['_id']))
-            else:
+            elif self.dbName == 'twitter':
                 display(Image(item['img_url'], height=100, width=200))
+            elif self.dbName == 'iNaturalist':
+                display(Image(item['url'], height=100, width=200))
     
             print("Relevant (y/n):", end =" ")
             rel = True if input() == "y" else False
@@ -104,37 +110,34 @@ class Database:
         wild = self.db[collection].count_documents({ "$and": [{"relevant":{"$in":[True]}}, {"wild":True}] }) / relevant_count * 100
         # %wild calculated out of total
         wild_tot = self.db[collection].count_documents({ "$and": [{"relevant":{"$in":[True]}}, {"wild":True}] }) / total * 100
-        print("Out of {} items, {}% are relevant. From those that are relevant, {}% are wild. Out of the total, {}% are wild".format(total, round(relevant,1), round(wild,1), round(wild_tot, 1)))
+        print("Out of {} items, {}% are relevant.From those that are relevant, {}% are wild. Out of the total, {}% are wild".format(total, round(relevant,1), round(wild,1), round(wild_tot, 1)))
 
         self.showHistogram(collection)
 
     def showHistogram(self, collection):
-        keys = {'youtube': 'publishedAt', 'twitter': 'created_at'}
-
-        res = self.db[collection].find({'wild':True})
+        keys = {'youtube': 'publishedAt', 'twitter': 'created_at', 'iNaturalist': 'time_observed_utc'}
+       
+        #gather results for youtube or twitter
+        if self.dbName == 'youtube' or self.dbName == 'twitter':
+            res = self.db[collection].find({'wild':True})
+        else:
+            #gather results for iNaturalist
+            res = self.db[collection].find({"$and": [{'captive': False},{'time_observed_utc':{"$ne":None}}]})
+        #create a list of all the times (in original UTC format) in respective fields for each platform    
         timePosts = [x[keys[self.dbName]] for x in res]
         if len(timePosts) < 1:
             print("No videos were processed yet.")
             return
-
-        # Convert the times from datetime format to YYYY-MM-DD format
-        dates = [dateutil.parser.parse(x).date() for x in timePosts]
-        #sort the converted rates in a list with most recent at beginning and least recent towards end
-        dates.sort()
+        dates = [dateutil.parser.parse(x).date() for x in timePosts] #Convert the times from datetime format to YYYY-MM-DD format
+        dates.sort() #sort the converted dates in a list with most recent at beginning and least recent towards end
         
         # Find the difference in days between posting dates of successive posts
-        smallestDifference = timedelta(100000)
-        largestDifference = timedelta(0)
-        lastDate = [dates[0]]
+        lastDate = [dates[0]]  #stores all the dates we have already looked at
         timeDiffs = []
         for date in dates:
-            res = abs(date - lastDate[-1])
-            largestDifference = res if res > largestDifference else largestDifference
-            smallestDifference = res if res < smallestDifference else smallestDifference
+            res = abs(date - lastDate[-1])#find the time difference between successive posts sorted
             timeDiffs.append(res.days)
             lastDate.append(date)
-
-        # diffInDays = (largestDifference - smallestDifference).days
 
         # Plotting the histogram
         plt.figure(figsize=(15,5))
@@ -143,21 +146,6 @@ class Database:
         plt.ylabel('Number of posts')
         plt.title('Histogram for Time Between Succesive Wild Posts')
         plt.show()
-    
-    #def postsPerUser(self, collection):
-        #docs = self.db[collection].find({'channelId':{'$ne': 0}})#{wild:True})
-        #user_list = []
-        
-        #print(docs)
-        
-        #for doc in docs:
-        #    try:
-        #        user = doc['channelId']
-        #        print(user)
-                #user_list.append(user)
-        #    except KeyError:
-         #       pass
-        
         
     #customized to youtube only so far
     def heatmap(self,collection, csvName):
@@ -185,35 +173,18 @@ class Database:
                 csvName.writerow(item)
         print('done! Check in your jupyter files for a .csv file with the name you entered')
     
-    #method to retrieve all wild documents for wildbook api call
-    #in YouTube playground, call method with 'saveTo' as existingCollection parameter
-    #should we create a new collection for each species with wild docs (*chosen for now), 
-    #1 single collection for ALL species w wild docs, or a csv file for each doc
+    #method to form collections consisting of only wild docs for wildbook api call
+    #only tailored towards YouTube currently
     def relevantDocuments(self, existingCollection):
-        
         newDocs = self.db[existingCollection].find({"wild": True})
-        #create new collection to store relevant documents for each species (specific to youtube collections)
-        if existingCollection == "humpback whales":
-            newCollection = "humpback whales wild"
-        elif existingCollection == "whale sharks":
-            newCollection = "whale sharks wild"
-        elif existingCollection == "iberian lynx":
-            newCollection = "iberian lynx wild"
-        elif existingCollection == "grevys zebra":
-            newCollection = "grevys zebra wild"
-        elif existingCollection == "Reticulated Giraffe":
-            newCollection = "Reticulated Giraffe wild"
-        elif existingCollection == "plains zebras":
-            newCollection = "plains zebras wild"
+        newCollection = existingCollection + " wild"
         
         #insert "wild" encounter items from existingCollection into newCollection
         #if not already in newCollection
         for item in newDocs:
             if self.db[newCollection].find_one(item) == None:
                 self.db[newCollection].insert_one(item);
-
-            
-             
+                
     def clearCollection(self, collection, msg=''):
         if (msg == 'yes'):
             self.db[collection].delete_many({})
@@ -223,3 +194,4 @@ class Database:
             
     def close(self):
         self.client.close()
+        
