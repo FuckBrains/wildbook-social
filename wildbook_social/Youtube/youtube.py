@@ -1,5 +1,6 @@
 from googleapiclient.discovery import build
 import time
+import csv
 
 class YouTube:
     def __init__(self, KEY, db=None):
@@ -35,10 +36,10 @@ class YouTube:
                 part='snippet',
                 #order = 'date',
                 fields='nextPageToken,items(id,snippet(publishedAt,title))',
-#                 fields='nextPageToken,pageInfo(totalResults),items(id,snippet(publishedAt,channelId,title,description))' if fields else '*',
                 type='video',
                 maxResults=50 if limit>50 else limit,
-                pageToken=self.nextPageToken if self.nextPageToken else ''
+                pageToken=self.nextPageToken if self.nextPageToken else '',
+                publishedAfter = "2019-06-01T00:00:00Z" #only gather results from June 01 2019 and forwards
             ).execute()
             items = searchResult['items']
             
@@ -62,6 +63,7 @@ class YouTube:
                 # try:
                 newItem = {
                     "_id": item['id']['videoId'],
+                    "channelId" : item['snippet'].get('channelId', 0), #added to count posts per user
                     "videoID": item['id']['videoId'],
                     "title": {
                         "original": item['snippet'].get('title', None),
@@ -103,16 +105,13 @@ class YouTube:
                     "relevant": None,
                     "wild": None
                 }
-                # except:
-                #     print(item)
 
                 # Saving item in database
                 if (saveTo):
                     self.db.addItem(newItem, saveTo)
-
                 modifiedResult.append(newItem)
             
-            # Appeding result to all previous search results
+            # Appending result to all previous search results
             self.results += modifiedResult
         
         print("Done!")
@@ -123,9 +122,50 @@ class YouTube:
     def videos(self, id, fields=False):
         searchResult = self.youtube.videos().list(
             part='snippet,statistics',
-            fields='items(snippet(description,tags),statistics)' if fields else '*',
+            fields='items(snippet(channelId,description,tags),statistics)' if fields else '*',
             id=id
         ).execute()
 
         return searchResult['items']
+    
+    
+    #iterate through channel result to get country that channel user resides in
+    def channelToCountry(self, listOfVideoIDs, collectionName, csvName):
+        channelIDs = []
+        listOfDicts = []
+        #get all channelIDs from videoIDs
+        for ID in listOfVideoIDs:
+            video_result = self.videos(ID)
+            for field in video_result:
+                channelIDs.append(field['snippet']['channelId'])     
+        
+        #get countries from channelIDs
+        countryDict = {}
+        for channelId in channelIDs:
+            result = self.youtube.channels().list(part = 'snippet', id = channelId ).execute()
+            for field in result['items']:
+                country = field['snippet'].get('country', None)
+            if country != None:
+                countryDict = {
+                    'channelID' : channelId,
+                    'country': country
+                }
+                listOfDicts.append(countryDict)
+            else: pass
+        print(listOfDicts)
+        
+        
+        #append the country to a csv file
+        fields = ['channelID', 'country'] 
+        #csvName = 'user locations for ' + collectionName + ' wild'
+        with open(csvName, 'w') as user_locations_csv:
+            csvName = csv.DictWriter(user_locations_csv, fieldnames = fields)
+            csvName.writeheader()
+            for item in listOfDicts:
+                csvName.writerow(item)
+        print('done! Check in your jupyter files for a .csv file with the name you entered')
+
+        #return csvName
+        #return channelIDs
+
     
