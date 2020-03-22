@@ -30,6 +30,30 @@ class Database:
         res = self.db[collection].find()
         return [x for x in res]
     
+    def convertToUTC(self, collection):
+        res = self.db[collection].find({"relevant":None})
+        count = 0
+        anticount = 0
+        
+        for doc in res:
+            date_str = doc['publishedAt']
+#             print(type(date_str))
+            if type(date_str) == str:
+                doc_id = doc['_id']
+                datetime_obj = dateutil.parser.parse(date_str)
+                #print(doc_id)
+                #print(type(datetime_obj))
+                #print(type(doc['publishedAt']))
+                self.db[collection].update_one({'_id': doc_id}, {'$set':{'publishedAt': datetime_obj}})
+                count = count + 1
+                #print(type(doc['publishedAt']))
+            else:
+#                 print("datetime object")
+                anticount = anticount + 1
+                continue
+        print(count)
+        print(anticount)
+        
     def doStatistics(self, collection, amount):
         i = 1
         while(amount > 0):
