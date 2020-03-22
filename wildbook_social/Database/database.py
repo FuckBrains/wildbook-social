@@ -51,7 +51,10 @@ class Database:
 #                 print("datetime object")
                 anticount = anticount + 1
                 continue
+        print("number of documents with UTC strings: ")
         print(count)
+        print('\n')
+        print("number of documents with datetime objects: ")
         print(anticount)
         
     def doStatistics(self, collection, amount):
