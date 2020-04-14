@@ -152,8 +152,12 @@ class Database:
         #IMPORTANT: self.dates() is a list of datetime.date() objects of wild encounters within the time frame
         #it converts .datetime objs to more general .date objs (easier to work with)
         #and then sorts the converted dates in a list with most recent at beginning and least recent towards end
-        self.dates = [x.date() for x in self.timePosts] 
-        self.dates.sort() 
+        if self.dbName == 'youtube' or self.dbName == 'twitter' or self.dbName == 'flickr':
+            self.dates = [x.date() for x in self.timePosts] 
+            self.dates.sort() 
+        else:
+            self.dates = [datetime.datetime.strptime(x, "%Y-%m-%dT%H:%M:%S.%fZ").date() for x in self.timePosts]
+            self.dates.sort
         
         # Find the difference in days between posting dates of successive posts
         lastDate = [self.dates[0]]  #stores all the dates we have already looked at
@@ -207,7 +211,72 @@ class Database:
         
            
         return self.postsPerWeekDict, numOfPosts
-            
+    
+    # Finds postsPerWeek for a given species + platform
+    #structures a dictionary as such: {week_0: 2, week_1: 15, week_2: 37 ...} from a list of dates
+    #plots number of posts (y axis) vs week # (x axis)
+    def postsPerWeekSpecies(self, collection): #, YYYY = 2019, MM = 6, DD = 1):
+
+        keys = {'youtube': 'publishedAt', 'twitter': 'created_at', 'iNaturalist': 'time_observed_utc', 'flickr': 'datetaken'}
+
+        #gather results for youtube or twitter or flickr
+        if self.dbName == 'youtube' or self.dbName == 'twitter' or self.dbName == 'flickr':
+            dateStr_2 = '2019-06-01T00:00:00.00Z'
+            timeFrameStart_2 = dateutil.parser.parse(dateStr_2)
+            res = self.db[collection].find({"$and":[{"wild": True},{"publishedAt":{"$gte": timeFrameStart_2}}]})
+        else:
+            dateStr_2 = '2019-06-01T00:00:00.00Z'
+            timeFrameStart_2 = dateutil.parser.parse(dateStr_2)
+            #gather results for iNaturalist
+            res = self.db[collection].find({"$and": [{'captive': False},{'time_observed_utc':{"$ne":None}}]})
+
+        #create a list of all the times (in original UTC format) in respective fields for each platform    
+        timePosts = [x[keys[self.dbName]] for x in res]
+        if len(timePosts) < 1:
+            print("No videos were processed yet.")
+            return
+        #IMPORTANT: self.dates() is a list of datetime.date() objects of wild encounters within the time frame
+        #it converts .datetime objs to more general .date objs (easier to work with)
+        #and then sorts the converted dates in a list with most recent at beginning and least recent towards end
+        if self.dbName == 'youtube' or self.dbName == 'twitter' or self.dbName == 'flickr':
+            dates = [x.date() for x in timePosts] 
+            dates.sort() 
+        else:
+            dates = [datetime.datetime.strptime(x, "%Y-%m-%dT%H:%M:%S.%fZ").date() for x in timePosts]
+            dates.sort()
+
+        start = timeFrameStart_2.date()
+        end = datetime.date.today()
+        weekNumber = 1
+        count = 0
+        dictWeekNumbers = {}
+        postsPerWeekDict = {}
+        numOfPosts = len(dates)
+
+        #make a dictionary to order weekStartDates
+        #format of self.dictWeekNumbers = { 1 : 06.01.19, 2: 06.08.19, 3:06.15.19 ... }
+        date = start
+        while date < end:
+            dictWeekNumbers[weekNumber] = date 
+            date += datetime.timedelta(days = 7)
+            weekNumber += 1
+        #print("\n week number dictionary: \n", self.dictWeekNumbers)   
+    
+        #make a dictionary self.postsPerWeek
+        #keys are datetime objects of the date to start a new week
+        #values are number of posts that were posted anytime from that date to date + 6 days
+        #format self.postsPerWeekDict = { 06.01.19 : 4, 06.08.19 : 5, 06.15.19 : 1 ... }
+        for key,value in dictWeekNumbers.items():
+            current_week = value
+            next_week = current_week + datetime.timedelta(days = 7)
+            for date in dates:
+                if (date >= current_week) and (date < next_week):
+                    count += 1
+            postsPerWeekDict[current_week] = count
+            count = 0
+        
+        return postsPerWeekDict, numOfPosts
+
     #use numpy to compute and plot the smoothed out posts per week stats in order to visualize any trends
     #plot average number of posts (y-axis) vs week # (x axis)
     #returns a list of simple moving average data points
@@ -221,6 +290,19 @@ class Database:
         self.smas = np.convolve(postsPerWeekList, weights, 'valid') #calculate simple moving averages (smas)
         return self.smas  
     
+    # Finds postsPerWeek for a given species + platform
+    def movingAveragePostsSpecies(self,collection, window):
+        postsPerWeekDict, numOfPosts = self.postsPerWeekSpecies(collection)
+
+        #create a list of just the counts of posts for each week 
+        postsPerWeekList = [item for item in postsPerWeekDict.values()] #FIXME: CHECK ORDER DUE TO DICTIONARY 
+        
+        #print('calculating simple moving average...\n')
+        #calculating moving average with data points in postsPerWeekList
+        weights = np.repeat(1.0, window)/window
+        smas = np.convolve(postsPerWeekList, weights, 'valid') #calculate simple moving averages (smas)
+        return smas
+
     #customized to youtube only so far
     def heatmap(self,collection, csvName):
         self.csvName = csvName +'.csv'
@@ -285,7 +367,7 @@ class Database:
         
         return self.list_of_users
     
-    def csvWriter(self,list_of_dictionaries, csvName):
+    def csvWriter(self,list_of_dictionaries, csvName,fields):
        #fields = ['channelId' ] 
         with open(csvName, 'w') as new_csv:
             csvName = csv.DictWriter(new_csv, fieldnames = fields)
