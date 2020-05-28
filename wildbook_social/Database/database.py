@@ -238,12 +238,12 @@ class Database:
         #IMPORTANT: self.dates() is a list of datetime.date() objects of wild encounters within the time frame
         #it converts .datetime objs to more general .date objs (easier to work with)
         #and then sorts the converted dates in a list with most recent at beginning and least recent towards end
-        if self.dbName == 'youtube' or self.dbName == 'twitter' or self.dbName == 'flickr':
-            dates = [x.date() for x in timePosts] 
-            dates.sort() 
-        else:
-            dates = [datetime.datetime.strptime(x, "%Y-%m-%dT%H:%M:%S.%fZ").date() for x in timePosts]
-            dates.sort()
+        # if self.dbName == 'youtube' or self.dbName == 'twitter' or self.dbName == 'flickr':
+        dates = [x.date() for x in timePosts] 
+        dates.sort() 
+        # else:
+        #     dates = [datetime.datetime.strptime(x, "%Y-%m-%dT%H:%M:%S.%fZ").date() for x in timePosts]
+        #     dates.sort()
 
         start = timeFrameStart_2.date()
         end = datetime.date.today()
