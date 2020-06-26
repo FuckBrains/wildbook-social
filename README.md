@@ -4,4 +4,3 @@ This repository contains classes to work with Youtube, Twitter, Flickr and iNatu
 
 Please use **playground** folder to make any files for testing. Thanks! Any code examples could be found there as well.
 
-Feel free to make any changes :)
