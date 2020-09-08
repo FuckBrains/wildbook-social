@@ -22,4 +22,4 @@ This array of species offers a combination of terrestial and marine animals, as 
 
 
 
-![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fuk.whales.org%2Fwhales-dolphins%2Fspecies-guide%2Fhumpback-whale%2F&psig=AOvVaw3asMSUC7cMH6cjVFpL9nkd&ust=1599661628890000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLC9rYvi2esCFQAAAAAdAAAAABAI.png)
+![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fuk.whales.org%2Fwhales-dolphins%2Fspecies-guide%2Fhumpback-whale%2F&psig=AOvVaw3asMSUC7cMH6cjVFpL9nkd&ust=1599661628890000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLC9rYvi2esCFQAAAAAdAAAAABAI)
