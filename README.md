@@ -20,4 +20,4 @@ Currently, our queries are focused around six species: humpback whales, whale sh
 This array of species offers a combination of terrestial and marine animals, as well as migratory and habitat-specific species. The combination is helpful in understanding and forming conclusions behind biases of the user base per platform.
 
 
-<img src="images/humpback-whale.jpg" width=100>
+<img src="images/humpback-whale.jpg" width=300>
