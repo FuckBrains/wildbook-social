@@ -1,4 +1,4 @@
-# Wildbook Social Media Bias Research #
+# Wildbook Social Media Bias Research: Using Social Media Platforms as Data Sources for Generating Wildlife Population Estimates #
 
 This repository contains classes to work with Youtube, Twitter, Flickr and iNaturalist APIs inorder to collect data
 to help monitor wildlife populations. In using this data, it is important to analyze any potential biases
