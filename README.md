@@ -33,8 +33,8 @@ Among the data collected across all four social media platforms (YouTube, Flickr
 In the following figures, we show the known habitats of all six species, as well as the plotted encounter and user locations collected from our data. Note: the iNaturalist platform in particular posed a greater challenge in collecting user location information due to privacy restrictions. Plots for iNaturalist map encounter location only. 
 
 ### Known Ranges ###
-<img src="species_habitats/humpback_whale.png" width=250> <img src="species_habitats/whale_shark.png" width=250> <img src="species_habitats/iberian_lynx.jpg" width=250>
-<img src="species_habitats/reticulated_giraffe.jpg" width=250> <img src="species_habitats/plains_zebra.png" width=250> <img src="species_habitats/grevy_zebra.png" width=250>
+<img src="images/species_habitats/humpback_whale.png" width=250> <img src="images/species_habitats/whale_shark.png" width=250> <img src="images/species_habitats/iberian_lynx.jpg" width=250>
+<img src="images/species_habitats/reticulated_giraffe.jpg" width=250> <img src="images/species_habitats/plains_zebra.png" width=250> <img src="images/species_habitats/grevy_zebra.png" width=250>
   
  ## Seasonal Patterns 
  In understanding the upload rate per platform, we plotted the number of posts per week per species from June 2019 - September 2020. 
