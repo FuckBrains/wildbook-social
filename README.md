@@ -78,19 +78,19 @@ In the following data plots, red dots signify encounter locations while green do
  An example of underlying bias in our data collected is evident when visualizing the delay in time between when a post is uploaded onto the iNaturalist platform and when the encounter actually occured. iNaturalist, unlike the other platforms, provides data for each post on when the encounter actually occured, and when the post documenting the encounter was posted. Below, we visualisze the time difference for each post that documents an encounter in our June 2019-Sep 2020 timeline. 
  
  #### Humpback Whales
- <img src="images/iNaturalist Delay Scatterplots/hw_scatterplot.png" width=300> <img src="images/iNaturalist Delay Scatterplots/hw_histogram.png" width=300>
+ <img src="images/iNaturalist Delay Scatterplots/hw_scatterplot.png" width=500> <img src="images/iNaturalist Delay Scatterplots/hw_histogram.png" width=500>
  
 #### Whale Sharks
-<img src="images/iNaturalist Delay Scatterplots/whale_sharks_scatterplot.png" width=300> <img src="images/iNaturalist Delay Scatterplots/whale_sharks_histogram.png" width=300>
+<img src="images/iNaturalist Delay Scatterplots/whale_sharks_scatterplot.png" width=500> <img src="images/iNaturalist Delay Scatterplots/whale_sharks_histogram.png" width=500>
 
 #### Iberian Lynx
-<img src="images/iNaturalist Delay Scatterplots/iberian_lynx_scatterplot.png" width=300> <img src="images/iNaturalist Delay Scatterplots/iberian_lynx_histogram.png" width=300>
+<img src="images/iNaturalist Delay Scatterplots/iberian_lynx_scatterplot.png" width=500> <img src="images/iNaturalist Delay Scatterplots/iberian_lynx_histogram.png" width=500>
 
 #### Reticulated Giraffe
-<img src="images/iNaturalist Delay Scatterplots/reticulated_giraffe_scatterplot.png" width=300> <img src="images/iNaturalist Delay Scatterplots/reticulated_giraffe_histogram.png" width=300>
+<img src="images/iNaturalist Delay Scatterplots/reticulated_giraffe_scatterplot.png" width=500> <img src="images/iNaturalist Delay Scatterplots/reticulated_giraffe_histogram.png" width=500>
 
 #### Plains Zebra
-<img src="images/iNaturalist Delay Scatterplots/plains_zebra_scatterplot.png" width=300> <img src="images/iNaturalist Delay Scatterplots/plains_zebra_histogram.png" width=300>
+<img src="images/iNaturalist Delay Scatterplots/plains_zebra_scatterplot.png" width=500> <img src="images/iNaturalist Delay Scatterplots/plains_zebra_histogram.png" width=500>
  
  Our data shows that time delays vary greatly, with some users posting up to 300 days after the date of the encounter. Looking at the histograms mapping the frequency of time delays, we observe that there is an exponential decay in delay, meaning that although most users upload the day of the encounter or very soon after, there are still cases in which users upload their enconters with a greater delay. These larger delays have lower frequencies. We speculate that large delays in posting times may be attributed to a more recent upload triggering past media to be uploaded, essentially resulting in the user uploading all viable data they have all in one go.
  
