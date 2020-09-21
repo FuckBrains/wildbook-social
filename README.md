@@ -35,6 +35,7 @@ In the following figures, we show the known habitats of all six species, as well
 ### Known Ranges ###
 Known Ranges - in order of Left to right, top to bottom: humpback whales, whale sharks, iberian lynx, reticulated giraffe, plains zebra, grevy's zebra
 (sources: Wikipedia and WWF)
+
 <img src="images/species_habitats/humpback_whale.png" width=250> <img src="images/species_habitats/whale_shark.png" width=250> <img src="images/species_habitats/iberian_lynx.jpg" width=250>
 <img src="images/species_habitats/reticulated_giraffe.jpg" width=250> <img src="images/species_habitats/plains_zebra.png" width=250> <img src="images/species_habitats/grevy_zebra.png" width=250>
   
