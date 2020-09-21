@@ -23,6 +23,17 @@ This array of species offers a combination of terrestial and marine animals, as 
 <img src="images/humpback-whale.jpg" width=250> <img src="images/whale-shark.jpg" width=250> <img src="images/iberian-lynx.jpg" width=250>
 <img src="images/reticulated-giraffe.jpg" width=250> <img src="images/plains-zebra.jpg" width=250> <img src="images/grevys-zebra.jpg" width=250>
 
-## Analytics/ Key-Findings
+## Key-Findings
+All data analyzed was data that was uploaded in the time frame of June 2019 - September 2020
 
-#Overlapping Geographical Ranges
+## Overlapping Geographical Ranges
+
+Among the data collected across all four social media platforms (YouTube, Flickr, iNaturalist, Twitter), we were able to find that data source geographical ranges were consistent with those of habitats belonging to each species. 
+
+In the following figures, we show the known habitats of all six species, as well as the plotted encounter and user locations collected from our data. Note: the iNaturalist platform in particular posed a greater challenge in collecting user location information due to privacy restrictions. Plots for iNaturalist map encounter location only. 
+
+<insert images here>
+  
+ ## Seasonal Patterns 
+ In understanding the upload rate per platform, we plotted the number of posts per week per species from June 2019 - September 2020. 
+ Our findings converged on the idea that time spans with the highest volume per species were consistent with seasonal patterns species exhibit (e.g mating season, year-round migration). It is also notable that tourism and interactive events serve as a key-propeller in data generation, with high volumes of posts being uploaded during time spans typically associated with vacation time taken (e.g summer months - May to August, winter months - December to January)
