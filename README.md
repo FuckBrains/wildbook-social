@@ -20,5 +20,5 @@ Currently, our queries are focused around six species: humpback whales, whale sh
 This array of species offers a combination of terrestial and marine animals, as well as migratory and habitat-specific species. The combination is helpful in understanding and forming conclusions behind biases of the user base per platform.
 
 
-<img src="images/humpback-whale.jpg" width=200> <img src="images/whale-shark.jpg" width=200> <img src="images/iberian-lynx.jpg" width=200>
-<img src="images/reticulated-giraffe.jpg" width=200> <img src="images/plains-zebra.jpg" width=200> <img src="images/grevys-zebra.jpg" width=200>
+<img src="images/humpback-whale.jpg" width=250> <img src="images/whale-shark.jpg" width=250> <img src="images/iberian-lynx.jpg" width=250>
+<img src="images/reticulated-giraffe.jpg" width=250> <img src="images/plains-zebra.jpg" width=250> <img src="images/grevys-zebra.jpg" width=250>
