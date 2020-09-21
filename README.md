@@ -47,10 +47,12 @@ In the following data plots, red dots signify encounter locations while green do
 <img src="images/Geographical Info/YouTube/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/YouTube/plains_zebra.png" width=300> <img src="images/Geographical Info/YouTube/grevy_zebra.png" width=300>
 
 #### Flickr ####
+(Grevy's Zebra did not yield any location data)
 <img src="images/Geographical Info/Flickr/humpback_whales.png" width=300> <img src="images/Geographical Info/Flickr/whale_sharks.png" width=300> <img src="images/Geographical Info/Flickr/iberian_lynx.png" width=300>
-<img src="images/Geographical Info/Flickr/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/Flickr/plains_zebra.png" width=300> <img src="images/Geographical Info/Flickr/grevy_zebra.png" width=300>
+<img src="images/Geographical Info/Flickr/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/Flickr/plains_zebra.png" width=300> 
 
 #### iNaturalist ####
+(Blue dots represent encounter locations only, no user location data was available)
 <img src="images/Geographical Info/iNaturalist/humpback_whales.png" width=300> <img src="images/Geographical Info/iNaturalist/whale_sharks.png" width=300> <img src="images/Geographical Info/iNaturalist/iberian_lynx.png" width=300>
 <img src="images/Geographical Info/iNaturalist/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/iNaturalist/plains_zebra.png" width=300> <img src="images/Geographical Info/iNaturalist/grevy_zebra.png" width=300>
   
