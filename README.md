@@ -62,14 +62,14 @@ In the following data plots, red dots signify encounter locations while green do
  In understanding the upload rate per platform, we plotted the number of posts per week per species from June 2019 - September 2020. 
  Our findings converged on the idea that time spans with the highest volume per species were consistent with seasonal patterns species exhibit (e.g mating season, year-round migration). It is also notable that tourism and interactive events serve as a key-propeller in data generation, with high volumes of posts being uploaded during time spans typically associated with vacation seasons(e.g summer months - May to August, winter months - December to January).
  
-###YouTube###
-<img src="images/Posts per Week/YouTube/all_species_yt.png" width=500>
+### YouTube ###
+<img src="images/Posts per Week/YouTube/all_species_yt.png" width=1000>
 
-###Flickr###
-<img src="images/Posts per Week/Flickr/all_species_flickr.png" width=500> 
+### Flickr ###
+<img src="images/Posts per Week/Flickr/all_species_flickr.png" width=1000> 
 
-###iNaturalist###
-<img src="images/Posts per Week/iNaturalist/all_species_iNat.png" width=500>
+### iNaturalist ###
+<img src="images/Posts per Week/iNaturalist/all_species_iNat.png" width=1000>
 
  
  ## iNaturalist - Delay in Upload Time from Time of Encounter
