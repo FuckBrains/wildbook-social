@@ -43,8 +43,8 @@ In the following data plots, red dots signify encounter locations while green do
 
 #### YouTube ####
 
-<img src="images/Geographical Info/YouTube/humpback_whales.png" width=250> <img src="images/Geographical Info/YouTube/whale_sharks.png" width=250> <img src="images/Geographical Info/YouTube/iberian_lynx.png" width=250>
-<img src="images/Geographical Info/YouTube/reticulated_giraffe.png" width=250> <img src="images/Geographical Info/YouTube/plains_zebra.png" width=250> <img src="images/Geographical Info/YouTube/grevy_zebra.png" width=250>
+<img src="images/Geographical Info/YouTube/humpback_whales.png" width=300> <img src="images/Geographical Info/YouTube/whale_sharks.png" width=300> <img src="images/Geographical Info/YouTube/iberian_lynx.png" width=300>
+<img src="images/Geographical Info/YouTube/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/YouTube/plains_zebra.png" width=300> <img src="images/Geographical Info/YouTube/grevy_zebra.png" width=300>
   
  ## Seasonal Patterns 
  In understanding the upload rate per platform, we plotted the number of posts per week per species from June 2019 - September 2020. 
