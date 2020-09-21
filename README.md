@@ -73,6 +73,10 @@ In the following data plots, red dots signify encounter locations while green do
 ### iNaturalist ###
 <img src="images/Posts per Week/iNaturalist/all_species_iNat.png" width=1000>
 
+Some key insights seen above are that the largest volume of posts uploaded for humpback whales from july to november of 2019 (YouTube, iNaturalist) and from november 2019 to january 2020 (Flickr). These time spans overlap with seasons that people are more likely to go on vacations (summer months, winter holidays). Because humpback whales are migratory animals, they can be seen by people year round. 
+
+Additionally, whale sharks across all platforms have the largest number of posts during the months of July 2019 - September 2019 and March 2020. Although the large volume of humpback whale data across each platform obscures the peaks in the other species' data, the individual plots generated for each species in our data analytics process displayed this information much more clearly, and allowed us to arrive at the conclusion that the large influxes of data during the aforementioned months overlap with annual mating seasons of June-September in the Cancun region, and the months of October - May for the Phillipines. 
+
  
  ## iNaturalist - Delay in Upload Time from Time of Encounter
  An example of underlying bias in our data collected is evident when visualizing the delay in time between when a post is uploaded onto the iNaturalist platform and when the encounter actually occured. iNaturalist, unlike the other platforms, provides data for each post on when the encounter actually occured, and when the post documenting the encounter was posted. Below, we visualisze the time difference for each post that documents an encounter in our June 2019-Sep 2020 timeline. 
