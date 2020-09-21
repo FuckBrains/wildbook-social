@@ -33,6 +33,8 @@ Among the data collected across all four social media platforms (YouTube, Flickr
 In the following figures, we show the known habitats of all six species, as well as the plotted encounter and user locations collected from our data. Note: the iNaturalist platform in particular posed a greater challenge in collecting user location information due to privacy restrictions. Plots for iNaturalist map encounter location only. 
 
 ### Known Ranges ###
+Known Ranges - in order of Left to right, top to bottom: humpback whales, whale sharks, iberian lynx, reticulated giraffe, plains zebra, grevy's zebra
+(sources: Wikipedia and WWF)
 <img src="images/species_habitats/humpback_whale.png" width=250> <img src="images/species_habitats/whale_shark.png" width=250> <img src="images/species_habitats/iberian_lynx.jpg" width=250>
 <img src="images/species_habitats/reticulated_giraffe.jpg" width=250> <img src="images/species_habitats/plains_zebra.png" width=250> <img src="images/species_habitats/grevy_zebra.png" width=250>
   
