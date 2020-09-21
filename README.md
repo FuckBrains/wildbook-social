@@ -30,7 +30,7 @@ All data analyzed was data that was uploaded in the time frame of June 2019 - Se
 
 Among the data collected across all four social media platforms (YouTube, Flickr, iNaturalist, Twitter), we were able to find that data source geographical ranges were consistent with those of habitats belonging to each species. 
 
-In the following figures, we show the known habitats of all six species, as well as the plotted encounter and user locations collected from our data. Note: the iNaturalist platform in particular posed a greater challenge in collecting user location information due to privacy restrictions. Plots for iNaturalist map encounter location only. 
+In the following figures, we show the known habitats of all six species, as well as the plotted encounter and user locations collected from our data. Note: the iNaturalist platform in particular posed a greater challenge in collecting user location information due to privacy restrictions. Plots for iNaturalist map encounter location only. Encounter dots(red) outside of the ranges particular to each species are assumed to be captive encounters incorrectly marked as wild encounters. This is where visualizing our encounter location data helps classify and confirm true wild encounters as opposed to relying on user input.
 
 ### Known Ranges ###
 Known ranges in order of left to right, top to bottom: humpback whales, whale sharks, iberian lynx, reticulated giraffe, plains zebra, grevy's zebra
@@ -48,11 +48,13 @@ In the following data plots, red dots signify encounter locations while green do
 
 #### Flickr ####
 (Grevy's Zebra did not yield any location data)
+
 <img src="images/Geographical Info/Flickr/humpback_whales.png" width=300> <img src="images/Geographical Info/Flickr/whale_sharks.png" width=300> <img src="images/Geographical Info/Flickr/iberian_lynx.png" width=300>
 <img src="images/Geographical Info/Flickr/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/Flickr/plains_zebra.png" width=300> 
 
 #### iNaturalist ####
 (Blue dots represent encounter locations only, no user location data was available)
+
 <img src="images/Geographical Info/iNaturalist/humpback_whales.png" width=300> <img src="images/Geographical Info/iNaturalist/whale_sharks.png" width=300> <img src="images/Geographical Info/iNaturalist/iberian_lynx.png" width=300>
 <img src="images/Geographical Info/iNaturalist/reticulated_giraffe.png" width=300> <img src="images/Geographical Info/iNaturalist/plains_zebra.png" width=300> <img src="images/Geographical Info/iNaturalist/grevy_zebra.png" width=300>
   
@@ -60,7 +62,15 @@ In the following data plots, red dots signify encounter locations while green do
  In understanding the upload rate per platform, we plotted the number of posts per week per species from June 2019 - September 2020. 
  Our findings converged on the idea that time spans with the highest volume per species were consistent with seasonal patterns species exhibit (e.g mating season, year-round migration). It is also notable that tourism and interactive events serve as a key-propeller in data generation, with high volumes of posts being uploaded during time spans typically associated with vacation seasons(e.g summer months - May to August, winter months - December to January).
  
- <insert plots here>
+###YouTube###
+<img src="images/Posts per Week/YouTube/all_species_yt.png" width=500>
+
+###Flickr###
+<img src="images/Posts per Week/Flickr/all_species_flickr.png" width=500> 
+
+###iNaturalist###
+<img src="images/Posts per Week/iNaturalist/all_species_iNat.png" width=500>
+
  
  ## iNaturalist - Delay in Upload Time from Time of Encounter
  An example of underlying bias in our data collected is evident when visualizing the delay in time between when a post is uploaded onto the iNaturalist platform and when the encounter actually occured. iNaturalist, unlike the other platforms, provides data for each post on when the encounter actually occured, and when the post documenting the encounter was posted. Below, we visualisze the time difference for each post that documents an encounter in our June 2019-Sep 2020 timeline. 
