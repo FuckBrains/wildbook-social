@@ -22,3 +22,7 @@ This array of species offers a combination of terrestial and marine animals, as 
 
 <img src="images/humpback-whale.jpg" width=250> <img src="images/whale-shark.jpg" width=250> <img src="images/iberian-lynx.jpg" width=250>
 <img src="images/reticulated-giraffe.jpg" width=250> <img src="images/plains-zebra.jpg" width=250> <img src="images/grevys-zebra.jpg" width=250>
+
+## Analytics/ Key-Findings
+
+#Overlapping Geographical Ranges
