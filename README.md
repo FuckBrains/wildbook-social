@@ -36,4 +36,18 @@ In the following figures, we show the known habitats of all six species, as well
   
  ## Seasonal Patterns 
  In understanding the upload rate per platform, we plotted the number of posts per week per species from June 2019 - September 2020. 
- Our findings converged on the idea that time spans with the highest volume per species were consistent with seasonal patterns species exhibit (e.g mating season, year-round migration). It is also notable that tourism and interactive events serve as a key-propeller in data generation, with high volumes of posts being uploaded during time spans typically associated with vacation time taken (e.g summer months - May to August, winter months - December to January)
+ Our findings converged on the idea that time spans with the highest volume per species were consistent with seasonal patterns species exhibit (e.g mating season, year-round migration). It is also notable that tourism and interactive events serve as a key-propeller in data generation, with high volumes of posts being uploaded during time spans typically associated with vacation seasons(e.g summer months - May to August, winter months - December to January).
+ 
+ <insert plots here>
+ 
+ ## iNaturalist - Delay in Upload Time from Time of Encounter
+ An example of underlying bias in our data collected is evident when visualizing the delay in time between when a post is uploaded onto the iNaturalist platform and when the encounter actually occured. iNaturalist, unlike the other platforms, provides data for each post on when the encounter actually occured, and when the post documenting the encounter was posted. Below, we visualisze the time difference for each post that documents an encounter in our June 2019-Sep 2020 timeline. 
+ 
+ <insert plots here>
+ 
+ <insert time difference histograms here>
+ 
+ Our data shows that time delays vary greatly, with some users posting up to 300 days after the date of the encounter. We speculate that large delays in posting times may be attributed to a more recent upload triggering past media to be uploaded, essentially resulting in the user uploading all viable data they have all in one go.
+ 
+ ## Concluding Remarks
+ Our data shows that social media platforms are a viable method of collecting data for wildlife population monitoring. With that said, we are currently in the process of writing up the publication explaining key factors of bias we discovered throughout the data collection process, as well as forming a more in-depth analysis on the significance of ease-of-access each platform provides, and how this impacts what the data collected through social media provides. A link to the publication will be provided once it is available. :)
