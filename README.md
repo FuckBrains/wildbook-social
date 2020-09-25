@@ -4,6 +4,8 @@ This repository contains classes to work with Youtube, Twitter, Flickr and iNatu
 to help monitor wildlife populations. In using this data, it is important to analyze any potential biases
 behind the data collect by gaining insight on the user base. 
 
+**The very early stages of this research were presented at the Midwest Big Data Hub All-hands meeting under the title "Crowdsourcing Wildlife Data From Social Media": https://midwestbigdatahub.org/2019-all-hands-meeting-poster-session/ **
+
 In this repository you will find the following:
 
 **playground** folder contains code to query our database, manually filter our data, and display analytics for each platform on the data filtered so far. Each social media platform (YouTube, Flickr, iNaturalist, and Twitter) has their own playground. Additionally, you will find within this folder a **Database** playground, which is used to generate analytics for species across each platform and compare effectively. 
