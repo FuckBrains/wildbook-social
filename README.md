@@ -26,7 +26,7 @@ This array of species offers a combination of terrestial and marine animals, as 
 <img src="images/reticulated-giraffe.jpg" width=250> <img src="images/plains-zebra.jpg" width=250> <img src="images/grevys-zebra.jpg" width=250>
 
 # Key-Findings #
-All data analyzed was data that was uploaded in the time frame of June 2019 - September 2020
+All data analyzed was data that was uploaded in the time frame of June 2019 - September 2020. All data will be made publicly available upon completion.
 
 ## Overlapping Geographical Ranges
 
